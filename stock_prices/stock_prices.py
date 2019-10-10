@@ -4,15 +4,16 @@ import argparse
 
 
 def find_max_profit(prices):
-    prices.sort()
-    maximum_profit = []
-    count = 0
-    for i in range(0, len(prices)):
-        print(maximum_profit)
-        count += 1
-        maximum_profit.append(prices[i] - prices[count])
+    smallest = prices[0]
+    max_profit = prices[1] - smallest
+    for i in range(1, len(prices) - 1):
+        new_profit = prices[i] - smallest
+        if new_profit > max_profit:
+            max_profit = new_profit
+        if prices[i] < smallest:
+            smallest = prices[i]
 
-    return maximum_profit
+    return max_profit
 
 
 print(find_max_profit([1050, 270, 1540, 3800, 2]))
